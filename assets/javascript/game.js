@@ -1,10 +1,11 @@
 var computerChoices =["a","b","c","d","e","f","g","h","i","j","k","l","m","n",
 "o","p","q","r","s","t","u","v","w","x","y", "z"]
 
-var win = 0;
+var wins = 0;
 var losses =0;
 var guesses=9;
-document.onkeyup = function(event) {
+var reset = 9;
+document.onkeyup = function(event)  {
     
     var userGuess = event.key;
 
@@ -12,14 +13,18 @@ document.onkeyup = function(event) {
 
     if(userGuess === computerChoices){
         win++;
-    } else(userGuess !== computerChoices)
-    { losses++}
+    } else{
+        guesses--;
+    }
+    if(guesses ===0){
+        losses++
+    }
 
-    var html=
-    "<p>Wins:" + win +"</p>"+
-    "<p>Losses:" + losses + "</p>";
-
-    document.querySelector("#game").innerHTML;
-
-
+document.getElementById("wins").innerHTML = "wins: " + wins;
+document.getElementById("losses").innerHTML = "losses: " + losses;
+document.getElementById("guesses").innerHTML = "guesses: " + guesses;
+document.getElementById("guesses").reset()
 }
+
+
+
